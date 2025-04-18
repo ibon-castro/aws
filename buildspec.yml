@@ -5,9 +5,9 @@ phases:
     runtime-versions:
       python: 3.11
     commands:
-      - pip install boto3
+      - pip install pyyaml
 
   build:
     commands:
-      - echo "Running stack tests..."
-      - python test/test_stack.py
+      - echo "Validating CloudFormation template structure..."
+      - python test_stack.py
