@@ -1,8 +1,17 @@
 import yaml
+from yaml.constructor import ConstructorError
+
+class CFNYamlLoader(yaml.SafeLoader):
+    pass
+
+def unknown_constructor(loader, tag_suffix, node):
+    return None  # Just ignore unknown tags like !Ref, !GetAtt
+
+CFNYamlLoader.add_multi_constructor('!', unknown_constructor)
 
 def lambda_handler(event=None, context=None):
     with open('template.yaml', 'r') as file:
-        template = yaml.safe_load(file)
+        template = yaml.load(file, Loader=CFNYamlLoader)
 
     resources = template.get('Resources', {})
 
