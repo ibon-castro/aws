@@ -1,0 +1,13 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      python: 3.11
+    commands:
+      - pip install boto3
+
+  build:
+    commands:
+      - echo "Running stack tests..."
+      - python test/test_stack.py
