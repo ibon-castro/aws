@@ -1,7 +1,7 @@
 import yaml
 
 def lambda_handler(event=None, context=None):
-    with open('cloudformation-template.yaml', 'r') as file:
+    with open('template.yaml', 'r') as file:
         template = yaml.safe_load(file)
 
     resources = template.get('Resources', {})
