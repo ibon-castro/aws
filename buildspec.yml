@@ -10,4 +10,4 @@ phases:
   build:
     commands:
       - echo "Validating CloudFormation template structure..."
-      - python test_stack.py
+      - python test.py
